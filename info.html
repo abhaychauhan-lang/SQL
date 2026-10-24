@@ -1,0 +1,155 @@
+>Database:
+>It is a collection of data in a format that can be easily accessed.
+
+>Why databases?
+>can store large data.
+>features like security,scalability.
+>Easier to input,update or delete data.
+
+>SQL vs NoSQL:
+>SQL:Relational database(data stored in tables).
+    >eg:MySQL,Oracle,PostgreSQL etc.
+>NoSQL:Non Relational database(data stored in documentory/key-val/graphs etc.)
+    >eg:MongoDb,Cassandra,Neo4j etc.
+
+>SQL(Structured Query Language):
+>SQL is a programming language used to interact with relational databases.
+
+>Our 1st Database:
+>CREATE DATABASE db_name; // for creating database
+>DROP DATABASE db_name; // for deleting database
+>USE db_name; // for creating a table in database
+
+>Our 1st table:
+>CREATE TABLE table_name(
+    column_name1 datatype constraint,
+    column_name2 datatype constraint,
+    column_name3 datatype constraint,
+)
+
+>DATABASE Queries:
+>CREATE DATABASE db_name;
+>CREATE DATABASE IF NOT EXISTS db_name;
+>DROP DATABASE db_name;
+>DROP DATABASE IF EXISTS db_name;
+>SHOW DATABASES;
+>SHOW TABLES;
+
+>Constraints:
+>Rules for data in the table.
+>NOT NULL: columns cannot have a null value.
+>UNIQUE: all values in column are different.
+>DEFAULT: set the default value of a column.
+     > salary INT DEFAULT 25000
+>CHECK: it can limit the values allowed in a column. 
+     > CONSTRAINT age_check CHECK (age>=18 AND city="Delhi")
+>PRIMARY KEY: makes a column unique and not null but used only for one.
+     >CREATE TABLE temp(
+        id int not null,
+        PRIMARY KEY(id)
+     );
+>FOREIGN KEY: prevents actions that would destroy link between tables.
+     >CREATE TABLE temp(
+        cust_id int,
+        FOREIGN KEY (cust_id) references customer(id)
+     );
+
+>Insert into Table:
+>INSERT INTO table_name
+ (colname1,colname2)
+ VALUES
+ (col1_v1,col2_v1),
+ (col2_v1,col2_v2);
+
+ >Select command:
+ >Selects and shows data from database.
+ >Syntax: SELECT col1,col2 FROM table_name;
+ >Syntax: SELECT *FROM table_name; (this is the syntax to show all). 
+
+>Where Clause:
+>to define some conditions.
+>syntax:
+>SELECT col1,col2 FROM table_name
+>WHERE conditions;
+
+>Where Clause:
+>Operators:
+   >Arithmetic Operators: +,-,*,/,% etc.
+   >Comparison Operators: =,!=,>,>=,<,<= etc.
+   >Logical Operators: AND,OR,NOT,IN,BETWEEN,ALL,LIKE,ANY etc.
+   >Bitwise Operators: &(Bitwise AND),|(Bitwise OR).
+
+>Limit Clause:
+>Sets an upper limit on number of tuples(rows) to be returned.
+>syntax:
+>SELECT col1,col2 FROM table_name
+>LIMIT number;
+
+>Order by Clause:
+>To sort in ascending order(ASC) or descending order(DESC).
+>SELECT col1,col2 FROM table_name
+>ORDER BY col_name(s) ASC;
+
+>Aggregate functions:
+>Aggregate functions perform a calculation on a set of values,and return a single value.
+>Types:COUNT(),MAX(),MIN(),SUM(),AVG().
+>eg: SELECT max(marks) FROM student;
+
+>Group by Clause:
+>Group rows that have same values into summary rows.
+>It collects data from multiple records and groups the result by one or more column.
+>SELECT col1,col2 FROM table_name GROUP BY col_name(s);
+>Generally,we use GROUP BY with an aggreate function.
+
+>Having Clause:
+>Similar to Where i.e. applies some conditions on rows.
+>But it is used when we want to apply any condition after grouping.
+>Syntax: SELECT age,max(followers) FROM user GROUP BY age HAVING max(followers)>200;
+
+>General Order:
+>SELECT column(s)
+>FROM table_name
+>WHERE condition
+>GROUP BY column(s)
+>HAVING condition
+>ORDER BY column(s) ASC;
+
+>Table Queries:
+>1)Update(to update existing rows)
+>UPDATE table_name
+>SET col1=val1,col2=val2
+>WHERE condition;
+ 
+>2)Delete(to delete existing rows)
+>DELETE FROM table_name
+>WHERE condition;
+
+>Table Queries:
+>Alter(to change the schema)
+>1)ADD Column:
+   ALTER TABLE table_name
+   ADD COLUMN column_name datatype constraint;
+
+>2)DROP Column:
+   ALTER TABLE table_name
+   DROP COLUMN column_name;
+
+>3)RENAME Column:
+   ALTER TABLE table_name
+   RENAME TO new_table_name;
+
+>4)CHANGE Column(rename):
+   ALTER TABLE table_name
+   CHANGE COLUMN old_name new_name new_datatype new_constraint;
+
+>5)MODIFY Column(modify datatype/constraint):
+   ALTER TABLE table_name
+   MODIFY col_name new_datatype new_constraint;
+
+>Table Queries:
+>Truncate(to delete table's data)
+>TRUNCATE TABLE table_name;
+
+>MySQL2 Package:
+>To connect Node with MySQL database we use mysql2 package.
+>connection.end() is used to close the connection with database.
